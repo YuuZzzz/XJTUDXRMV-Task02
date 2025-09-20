@@ -1,0 +1,25 @@
+# 1. 指定 CMake 最低版本
+cmake_minimum_required(VERSION 3.10)
+
+# 2. 定义项目名称
+project(OpenCV_Basic_Tutorial)
+
+# 3. 查找 OpenCV 包 (这是关键)
+#    REQUIRED 表示如果找不到 OpenCV，配置就会失败
+find_package(OpenCV REQUIRED)
+
+# 4. 打印找到的 OpenCV 版本，方便调试
+message(STATUS "OpenCV version: ${OpenCV_VERSION}")
+
+# 5. 添加 OpenCV 的头文件目录到项目中
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+# 6. 定义要生成的可执行文件
+#    名称为 "opencv_app"，源文件是 src/main.cpp
+add_executable(opencv_app src/main.cpp)
+
+# 7. 将我们的程序与 OpenCV 库链接起来
+#    这样我们的程序才能调用 OpenCV 的函数
+target_link_libraries(opencv_app ${OpenCV_LIBS})
+
+
